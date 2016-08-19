@@ -3,7 +3,6 @@
     <meta charset="UTF-8" />
 </head>
 <body>
-<!-- Version 10 -->
 <h4 align="center">
 This tool provide scanning websites and searching with dork
 </h4>
