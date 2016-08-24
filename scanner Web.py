@@ -40,7 +40,7 @@ class screen () :
         self.argumentList = ["Url=", "Dork=", "sqlInjection","saveRs", "tcpPorts","udpPorts", "Dir","pageAdmin","wp", "jom",
          "count=", "Base64Decry=", "Base64Encry=", "md5Encry=", "motor=","noInfo", "help", "update"]
 
-        self.dialogTxt = ["Url", "Ip", "Query", "Shema", "Version", "Server-status","Server", "Server-Ip", "User Agent", "Vulnerability sqlInjection",
+        self.dialogTxt = ["","Url", "Ip", "Query", "Shema", "Version", "Server-status","Server", "Server-Ip", "User Agent", "Vulnerability sqlInjection",
          "Motor", "Method"]
         self.scanTitle = ["SEARCH DORK ", "SCAN URL", "ENCRYPT BASE64", "DECRYPT BASE64", "FIND ADMIN PAGE", "MD5 ENCRYPT"]
         self.platformUser = platformUser
@@ -448,7 +448,7 @@ class connection(screen):
             getResult = urllib.request.urlopen(self.opener)
             html = getResult.read()
 
-            print(self.Color[5], "[+] ", self.dialogTxt[0], " : ", self.Color[-2], self.UrlToConnect)
+            print(self.Color[5], "[+] ", self.dialogTxt[1], " : ", self.Color[-2], self.UrlToConnect)
             if self.noInfo == False :
                 ## GET TYPE OF SERVER
                 self.header = getResult.getheader("Server")
