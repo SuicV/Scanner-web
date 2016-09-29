@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
 </head>
 <body>
-<!-- Version 1.1 -->
+<!-- Version 1.2 -->
 <h2 align="center">
 Scanner Web 
 </h2>
