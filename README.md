@@ -13,7 +13,9 @@ Search / Dork / Scan
 </h4>
 <table>
     <tr>
-    <p align="center">Note : I'm not responsible to any damage caused from by this tool </p>
+        <th>
+            <p align="center">Note : I'm not responsible to any damage caused from by this tool </p>
+        </th>
     </tr>
 </table>
 </body>
