@@ -47,7 +47,7 @@ class screen () :
         self.scanTitle = ["SEARCH DORK ", "SCAN URL", "ENCRYPT BASE64", "DECRYPT BASE64", "FIND ADMIN PAGE", "MD5 ENCRYPT"]
         self.platformUser = platformUser
         self.argumentUser = argumentProgram
-        self.version = "1.1"
+        self.version = "1.2"
         self.Dork , self.Url, self.Errors , self.base64Encry, self.base64Decry, self.md5Encrypt, self.motor , self.count= "","","","","","",int(0), int(10)
         self.tcpPorts, self.udpPorts, self.getInfo  , self.findAdmin ,  self.sqlFind,  self.wordPress, self.joomla , self.exSqlMap, self.noInfo, self.saveResult, self.update= False, False, False, False, False, False , False, False, False , False, False
         pass
@@ -670,7 +670,7 @@ def Time():
 ## CHECK PYTHON VERSION
 def checkVersion():
     getVersion = re.findall(r"<!-- Version (.*?) -->",str(urllib.request.urlopen("https://raw.githubusercontent.com/Suicedal-Virus/Scanner-web/master/README.md").read()))[0]
-    if float(getVersion) > 1.1 :
+    if float(getVersion) > 1.2 :
         print("[!] New version available Download it .")
     else :
         print("[+] Aucun new version available .")
