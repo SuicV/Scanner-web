@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -5,7 +6,7 @@
 <body>
 <!-- Version 1.1 -->
 <h4 align="center">
-This tool provide scanning websites and searching with dork
+Scanner Web 
 </h4>
 <table
 </body>
