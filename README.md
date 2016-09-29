@@ -9,7 +9,9 @@
 Scanner Web 
 </h2>
 <table>
-Search / Scan / Dork 
+<h4 algn="center">
+Search / Scan / Dork
+</h4>
 </table>
 </body>
 </html>
