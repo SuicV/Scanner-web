@@ -8,7 +8,7 @@
 <h2 align="center">
 Scanner Web 
 </h2>
-<h4 algn="center">
+<h4 align="center">
 Search / Scan / Dork
 </h4>
 <table>
