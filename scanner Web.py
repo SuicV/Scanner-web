@@ -672,8 +672,10 @@ def checkVersion():
     getVersion = re.findall(r"<!-- Version (.*?) -->",str(urllib.request.urlopen("https://raw.githubusercontent.com/Suicedal-Virus/Scanner-web/master/README.md").read()))[0]
     if float(getVersion) > 1.2 :
         print("[!] New version available Download it .")
+	print("\033[0;0m")
     else :
         print("[+] Aucun new version available .")
+	print("\033[0;0m")
     pass
 
 if __name__ == "__main__" :
