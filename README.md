@@ -12,7 +12,9 @@ Scanner Web
 Search / Dork / Scan 
 </h4>
 <table>
-
+    <tr>
+    <p color="red">Note : I'm not responsible to any damage caused from by this tool </p>
+    </tr>
 </table>
 </body>
 </html>
