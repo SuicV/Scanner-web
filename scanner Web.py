@@ -32,11 +32,13 @@ import hashlib
 class screen () :
 
     def __init__ (self, platformUser, argumentProgram):
+        # colors 
         if platformUser == "linux" :
             self.Color = ("\033[0;30m", "\033[1;30m", "\033[1;31m", "\033[0;32m", "\033[0;33m", "\033[1;33m", "\033[0;34m", "\033[0;35m",
                             "\033[0;36m", "\033[1;36m", "\033[0;37m", "\033[1;37m", "\033[1;34m")
         else :
             self.Color = ("","","","","","","","","","","","","")
+
         self.argumentList = ["Url=", "Dork=", "sqlInjection","saveRs", "tcpPorts","udpPorts", "Dir","pageAdmin","wp", "jom",
          "count=", "Base64Decry=", "Base64Encry=", "md5Encry=", "motor=","noInfo", "help", "update"]
 
@@ -104,37 +106,36 @@ class screen () :
         print(self.Color[2],"\tNO SYSTEM IS SAFE !!!")
         print(self.Color[1],logo[lRandom],"\n",self.Color[2], prov[provRandom])
 
-        print(self.Color[3],"\n [+] usage : python scannerWeb [options] || ",self.dialogTxt[+5]," : ",self.version,"\n")
-        print(" [!} Example : python scannerWeb --Dork [YOUR DORK] --wp --pageAdmin\n")
+        print(self.Color[3],"\n [+] usage : python 'scanner Web.py' [OPTIONS] || ",self.dialogTxt[+5]," : ",self.version,"\n")
+        print(" [!} Example : python 'scanner Web.py' --Dork [DORK] --wp --pageAdmin\n")
 
     def help(self):
         ##
         ##      Help and option can use white programme
         ##
-        print(self.Color[5],"  [!] For specific web-site ")
-        print(self.Color[9],"     [+] Options : \n")
-        print("         --Url            :  url of web-site")
-        print("         --Dork           :  Use dork ")
-        print("         --motor          :  Set your engine ")
-        print("                          :     1 => Sogou  2=> Yandex ")
-        print("                          :     3 => Google  4=> Bing  5 => Ask")
-        print("         --sqlInjection   :  Scan Sql Injection vulnerability")
-        print("         --noInfo         :  Don't show information web-site")
-        print("         --tcpPorts       :  Scan tcp port of server ")
-        print("         --udpPorts       :  Scan udp port of server ")
-        print("         --pageAdmin      :  Find page admin ")
-        print("         --count          :  Number of search engine results")
-        print("         --Base64Decry    :  Decrypt string to base64")
-        print("         --Base64Encry    :  Encrypt string to base64")
-        print("         --md5Encry       :  Encrypt string to md5")
-        print("         --wp             :  Check if the web-site from Word-Press ")
-        print("         --jom            :  Check if the web-site from Joomla")
-        print("         --update         :  Check for update")
-        print("         --saveRs         :  Save results ")
-        print("         --help           :  Help")
-        print(self.Color[5],"\n  [!] Examples : ")
-        print(self.Color[9],"       [+]  python scannerWeb.py --Url [SITE YOU WANT SCANNING] --pageAdmin")
-        print(self.Color[9],"       [+]  python scannerWeb.py --Dork [YOUR DORK] --sqlInjection ")
+        print(self.Color[4],"     [+] Options : \n")
+        print(self.Color[-1],"         --Url            ",self.Color[5],":",self.Color[-2],"  url of web-site")
+        print(self.Color[-1],"         --Dork           ",self.Color[5],":",self.Color[-2],"  Use dork ")
+        print(self.Color[-1],"         --motor          ",self.Color[5],":",self.Color[-2],"  Set your engine ")
+        print(self.Color[-1],"                          ",self.Color[5],":",self.Color[-2],"     1 => Sogou  2=> Yandex ")
+        print(self.Color[-1],"                          ",self.Color[5],":",self.Color[-2],"     3 => Google  4=> Bing  5 => Ask")
+        print(self.Color[-1],"         --sqlInjection   ",self.Color[5],":",self.Color[-2],"  Scan Sql Injection vulnerability")
+        print(self.Color[-1],"         --noInfo         ",self.Color[5],":",self.Color[-2],"  Don't show information web-site")
+        print(self.Color[-1],"         --tcpPorts       ",self.Color[5],":",self.Color[-2],"  Scan tcp port of server ")
+        print(self.Color[-1],"         --udpPorts       ",self.Color[5],":",self.Color[-2],"  Scan udp port of server ")
+        print(self.Color[-1],"         --pageAdmin      ",self.Color[5],":",self.Color[-2],"  Find page admin ")
+        print(self.Color[-1],"         --count          ",self.Color[5],":",self.Color[-2],"  Number of search engine results")
+        print(self.Color[-1],"         --Base64Decry    ",self.Color[5],":",self.Color[-2],"  Decrypt string to base64")
+        print(self.Color[-1],"         --Base64Encry    ",self.Color[5],":",self.Color[-2],"  Encrypt string to base64")
+        print(self.Color[-1],"         --md5Encry       ",self.Color[5],":",self.Color[-2],"  Encrypt string to md5")
+        print(self.Color[-1],"         --wp             ",self.Color[5],":",self.Color[-2],"  Check if the web-site from Word-Press ")
+        print(self.Color[-1],"         --jom            ",self.Color[5],":",self.Color[-2],"  Check if the web-site from Joomla")
+        print(self.Color[-1],"         --update         ",self.Color[5],":",self.Color[-2],"  Check for update")
+        print(self.Color[-1],"         --saveRs         ",self.Color[5],":",self.Color[-2],"  Save results ")
+        print(self.Color[-1],"         --help           ",self.Color[5],":",self.Color[-2],"  Help")
+        print(self.Color[4],"\n  [!] Examples : ")
+        print(self.Color[-2],"       [+]  python scannerWeb.py --Url [SITE YOU WANT SCANNING] --pageAdmin")
+        print(self.Color[-2],"       [+]  python scannerWeb.py --Dork [YOUR DORK] --sqlInjection ")
 
 
     def checkArgument(self):
@@ -206,11 +207,13 @@ class screen () :
                 self.update = True
         if self.Url and self.Dork:
             self.Errors = "\n[!] You cant use options --Url and --Dork in the same time"
+
         pass
     def Show(self):
         if self.Errors :
             screen.help(self)
             print(self.Color[2],self.Errors)
+            print("\033[0;0m")
             sys.exit()
         pass
 ############################################################################################################################################################################################################################################################################################################
@@ -333,7 +336,7 @@ class connection(screen):
         self.Forbieden = ['facebook.', 'twitter.', 'google.', 'github.', 'linkedin.', 'microsoft.', 'youtube.', 'bing.',
                           'yahoo.', 'sogou.', 'ask.', 'yandex.', 'msn.', 'w3school.', 'windows.', 'adobe.com', 'outlook.',
                           'gmail.', 'doc.google.', 'maps.google', 'window.', 'JQuery.min', 'hotmail.', 'yandex.','sogou', 'bing',
-                          'php.', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net']
+                          'php.net', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net']
 
         self.userAgent = userAgent
         self.motorPrepared, self.findAdminFound , self.wp , self.jm= "", "", 1, 1
@@ -345,29 +348,43 @@ class connection(screen):
     ########################################################################################################################################
     ## PREPARE ENGINE +++++> SELF.DORK######################################################################################################
     def setEngine(self):
+
+    	# encrypt dork 
         queryEncode = urllib.parse.quote(self.Dork)
+        
+        # set motor if type scan "search whit dork"
         if self.motor == 1:
+        	## sougo
             self.engin = connection.motors[0]
             self.engin = self.engin.format(queryEncode, "{0}")
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Sogou")
 
         elif self.motor == 2:
+        	## Yandex
             self.engin = connection.motors[1]
             self.engin = self.engin.format(connection.MsIds, queryEncode, "{0}")
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Yandex")
+        
         elif self.motor == 3:
+        	## google
             self.engin = connection.motors[2]
             self.engin = self.engin.format(connection.googleDomainName, queryEncode, "{0}")
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Google")
+        
         elif self.motor == 4:
+        	## Bing 
             self.engin = connection.motors[3]
             self.engin = self.engin.format(queryEncode, "{0}", connection.browserLang)
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Bing")
+        
         elif self.motor == 5:
+        	## Ask
             self.engin = connection.motors[4]
             self.engin = self.engin.format(queryEncode, "{0}", connection.Ids)
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Ask")
+        
         else:
+        	## Default google 
             self.engin = connection.motors[2]
             self.engin = self.engin.format(connection.googleDomainName, queryEncode, "{0}")
             print(self.Color[5], "[+] Engine :", self.Color[-2], " Google")
@@ -389,6 +406,7 @@ class connection(screen):
             connection.getResult(self,response, engine)
         except Exception : 
             print("[+] Error in connection to the engine")
+            print("\033[0;0m")
             sys.exit()
 			
     ########################################################################################################################################
@@ -438,27 +456,33 @@ class connection(screen):
     ########################################################################################################################################
     ## CONNETION TO THE TARGET ++++> SELF.URL ##############################################################################################
     def connectionTarget(self, Url):
-        self.UrlToConnect = Url
-        self.Urlparse = urllib.parse.urlparse(self.UrlToConnect)        
+
+        self.Urlparse = urllib.parse.urlparse(Url)
+        print(self.Color[12], ":" * 75)        
+        print(self.Color[5], "[+] ", self.dialogTxt[1], " : ", self.Color[-2], Url)
         try:
-            print(self.Color[12], ":" * 75)
+            
             self.opener = urllib.request.Request(Url)
             ## SET USER AGENT
+            
             self.opener.add_header("User-Agent", self.userAgent)
+            
             getResult = urllib.request.urlopen(self.opener)
+            
             html = getResult.read()
-
-            print(self.Color[5], "[+] ", self.dialogTxt[1], " : ", self.Color[-2], self.UrlToConnect)
+            
             if self.noInfo == False :
                 ## GET TYPE OF SERVER
                 self.header = getResult.getheader("Server")
+            
                 self.ipServer = socket.gethostbyname(self.Urlparse[1])
+            
                 print(self.Color[5], "[+] ", self.dialogTxt[7], " : ", self.Color[-2], self.header)
                 print(self.Color[5], "[+] ", self.dialogTxt[6], " : ", self.Color[-2], getResult.status)
                 print(self.Color[5], "[+] ", self.dialogTxt[8], ": ", self.Color[-2], self.ipServer)
 
             if self.wordPress :
-                if self.UrlToConnect :
+                if Url :
                     for tag in connection.wordpressTag :
                         if tag in str(html):
                             print(self.Color[5], "[+]  WordPress :",self.Color[3]," Yes")
@@ -468,7 +492,7 @@ class connection(screen):
                         print(self.Color[5],"[+]  WordPress : ",self.Color[-2]," No")
 
             if self.joomla :
-                if self.UrlToConnect :
+                if Url :
                     if connect.joomlaTag in str(html) :
                         print(self.Color[5], "[+]  Joomla :",self.Color[3]," Yes")
                         self.jm = 0
@@ -476,9 +500,10 @@ class connection(screen):
                     if self.jm != 0 :
                         print(self.Color[5], "[+]  Joomla : ", self.Color[-2], " No")
         except ValueError:
-            print("\n", self.Color[2]," [!] Error : check  your url")
+            print("\n",self.Color[2],"[!] Error : check  your url")
             print("\n\t", self.Color[5],
-                  "[+]  Some advices : \n\t       - Add http or https to your url\n\t       - Set your url into double cama \n\t       - Don't set an Ip")
+                  "[+]  Some advices :",self.Color[-2]," \n\t\t- Add http or https to your url\n\t\t- Set your url into double cama \n\t\t- Don't set an Ip")
+            print("\033[0;0m")
             sys.exit()
         except urllib.error.URLError as e :
             print(self.Color[5],"[+] Url : ",self.Color[-2],Url)
@@ -488,6 +513,7 @@ class connection(screen):
     ########################################################################################################################################################
     ##   SCAN PORTS ########################################################################################################################################
     def portsScan(self, url):
+        
         print("-"*70)
         urlParse = urllib.parse.urlparse(url)
         ports = [20,21,22,23,24,25,35,37,53,80,88,130,135,161,162,443,445,530,546,547,561,1433,1434,1701,1723,2082,2087,2121,2222,3306,3389,8080]
@@ -729,6 +755,7 @@ if __name__ == "__main__" :
             
             if connect.saveResult : 
                 print("\n",Screen.Color[4],"[::] Good Bye ! !--Hacker--! || your result is saved on save result.txt")
+        
         ## IF USER USE URL PARAMETER
         elif connect.Url:
             print("\t\t", Screen.Color[12], " " * 10, Time())
@@ -748,5 +775,9 @@ if __name__ == "__main__" :
             if connect.saveResult :
                     connect.saveResults(Screen.scanTitle[1], connect.Url , 1)
                     print("\n",Screen.Color[4],"[::] Good Bye ! !--Hacker--! || your result is saved on save result.txt")
+    	
+    	
     except KeyboardInterrupt :
         print(Screen.Color[2],"\n\t[!] Good bye bro process stopped by user.")
+    
+    print("\033[0;0m")
