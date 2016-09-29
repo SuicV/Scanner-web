@@ -12,9 +12,9 @@ Scanner Web
 Search / Dork / Scan 
 </h4>
 <table>
-    <tr>
+    <tr align="center">
         <th>
-            <p align="center">Note : I'm not responsible to any damage caused from by this tool </p>
+            <p >Note : I'm not responsible to any damage caused from by this tool </p>
         </th>
     </tr>
 </table>
