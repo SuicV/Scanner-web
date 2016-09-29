@@ -9,7 +9,7 @@
 Scanner Web 
 </h2>
 <h4 align="center">
-Search / Scan / Dork
+Search / Dork / Scan 
 </h4>
 <table>
 
