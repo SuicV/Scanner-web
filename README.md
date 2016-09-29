@@ -8,6 +8,7 @@
 <h2 align="center">
 Scanner Web 
 </h2>
-<table
+<table>
+</table>
 </body>
 </html>
