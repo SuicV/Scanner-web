@@ -26,6 +26,10 @@ Search / Dork / Scan
         <td><b>Facebook</b></td>
         <td align="center" >https://www.facebook.com/BarmajiyatTreeZero</td>
     </tr>
+    <tr>
+        <th><b>Youtube</b></th>
+        <th align="center">https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA</th>
+    </tr>
 </table>
 </body>
 </html>
