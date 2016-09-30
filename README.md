@@ -24,7 +24,7 @@ Search / Dork / Scan
     </tr>
     <tr>
         <td><b>Facebook</b></td>
-        <td>https://www.facebook.com/BarmajiyatTreeZero</td>
+        <td align="center" >https://www.facebook.com/BarmajiyatTreeZero</td>
     </tr>
 </table>
 </body>
