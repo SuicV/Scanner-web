@@ -44,7 +44,7 @@ class screen () :
 
         self.dialogTxt = ["","Url", "Ip", "Query", "Shema", "Version", "Server-status","Server", "Server-Ip", "User Agent", "Vulnerability sqlInjection",
          "Motor", "Method"]
-        self.scanTitle = ["SEARCH DORK ", "SCAN URL", "ENCRYPT BASE64", "DECRYPT BASE64", "FIND ADMIN PAGE", "MD5 ENCRYPT"]
+        self.scanTitle = ["SEARCH DORK ", "SCAN URL", "ENCRYPT BASE64", "DECRYPT BASE64", "FIND ADMIN PAGE", "MD5 ENCRYPT","CHECK UPDATE"]
         self.platformUser = platformUser
         self.argumentUser = argumentProgram
         self.version = "1.2"
@@ -517,8 +517,10 @@ class connection(screen):
         print("-"*70)
         urlParse = urllib.parse.urlparse(url)
         ports = [20,21,22,23,24,25,35,37,53,80,88,130,135,161,162,443,445,530,546,547,561,1433,1434,1701,1723,2082,2087,2121,2222,3306,3389,8080]
-        SocketTcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        SocketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        
+        SocketTcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # SOCKET TCP
+        SocketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # SOCKET UDP
+
         if self.tcpPorts :
             print(self.Color[5],"\n====> Scan port tcp (open) :", end=" ")
             self.tcpport = []
@@ -671,12 +673,12 @@ def Time():
 def checkVersion():
     getVersion = re.findall(r"<!-- Version (.*?) -->",str(urllib.request.urlopen("https://raw.githubusercontent.com/Suicedal-Virus/Scanner-web/master/README.md").read()))[0]
     if float(getVersion) > 1.2 :
-        print("[!] New version available Download it .")
-	
+    	print(Screen.Color[2],"[!] New version available Download it .")
+		
     else :
-        print("[+] Aucun new version available .")
-	
-    pass
+    	print(Screen.Color[3],"[+] Aucun new version available .")
+		
+    
 
 if __name__ == "__main__" :
 
@@ -696,7 +698,7 @@ if __name__ == "__main__" :
 
         ## CHECK UPDATE 
         if Screen.update :
-            print(Screen.Color[12],"::::::::::::::::::::::::::::::: CHECK UPDATE ::::::::::::::::::::::::::::::: ") 
+            print(Screen.Color[12],"::::::::::::::::::::::::::::::: ",Screen.scanTitle[-1]," ::::::::::::::::::::::::::::::: ") 
             checkVersion()
             sys.exit()
         ## IF USER WANT DECRYPT BASE64 TO STRING
@@ -716,7 +718,7 @@ if __name__ == "__main__" :
         ## IF USER WANT ENCRYPT STRING TO MD5
         if Screen.md5Encrypt :
             print("\t\t", Screen.Color[12], " " * 10, Time())
-            print(Screen.Color[12], ":::::::::::::::::::::::::::::::  ", Screen.scanTitle[-1]," ::::::::::::::::::::::::::::::: ")
+            print(Screen.Color[12], ":::::::::::::::::::::::::::::::  ", Screen.scanTitle[-2]," ::::::::::::::::::::::::::::::: ")
             print(Screen.Color[5],"[+] String Encrypted : ", Screen.Color[-2],Screen.md5Encrypt)
             md5Encrypt(Screen.md5Encrypt)
 
@@ -781,5 +783,5 @@ if __name__ == "__main__" :
     	
     except KeyboardInterrupt :
         print(Screen.Color[2],"\n\t[!] Good bye bro process stopped by user.")
-    
-    print("\033[0;0m")
+
+	print("\033[0;0m")
