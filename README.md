@@ -11,12 +11,6 @@ Scanner Web
 <h4 align="center">
 Search / Dork / Scan 
 </h4>
-<table align="center">
-    <tr>
-        <th>
-            <p >Note : I'm not responsible to any damage caused from by this tool </p>
-        </th>
-    </tr>
-</table>
+<p align="center" >Note : I'm not responsible to any damage caused from by this tool </p>
 </body>
 </html>
