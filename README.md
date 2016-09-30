@@ -24,11 +24,11 @@ Search / Dork / Scan
     </tr>
     <tr>
         <td><b>Facebook</b></td>
-        <td align="center" >https://www.facebook.com/BarmajiyatTreeZero</td>
+        <td align="center" ><p>https://www.facebook.com/BarmajiyatTreeZero</p></td>
     </tr>
     <tr>
         <th><b>Youtube</b></th>
-        <th align="center">https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA</th>
+        <th align="center"><p>https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA</p></th>
     </tr>
 </table>
 </body>
