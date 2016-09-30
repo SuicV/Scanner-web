@@ -15,10 +15,16 @@ Search / Dork / Scan
 <h2 align="center">Information</h2>
 <table width="100%" border="0" cellpadding="0" cellspacing="2">
     <tr>
-    
-        <td width="100px"><b>coder</b></td>
-        <td width="780px">Driss Oulhbib</td>
-        
+        <td width="100px"><b>Coder</b></td>
+        <td width="780px" align="center" >Driss Oulhbib</td>
+    </tr>
+    <tr>
+        <th><b>Version</b></th>
+        <th align="center">1.2</th>
+    </tr>
+    <tr>
+        <td><b>Facebook</b></td>
+        <td>https://www.facebook.com/BarmajiyatTreeZero</td>
     </tr>
 </table>
 </body>
