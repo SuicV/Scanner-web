@@ -19,16 +19,16 @@ Search / Dork / Scan
         <td width="780px" align="center" >Driss Oulhbib</td>
     </tr>
     <tr>
-        <th><b>Version</b></th>
-        <th align="center">1.2</th>
+        <th width="100px"><b>Version</b></th>
+        <th width="780px" align="center">1.2</th>
     </tr>
     <tr>
-        <td><b>Facebook</b></td>
-        <td align="center" ><p>https://www.facebook.com/BarmajiyatTreeZero</p></td>
+        <td width="100px" ><b>Facebook</b></td>
+        <td width="780px" align="center" ><p>https://www.facebook.com/BarmajiyatTreeZero</p></td>
     </tr>
     <tr>
-        <th><b>Youtube</b></th>
-        <th align="center"><p>https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA</p></th>
+        <th width="100px" ><b>Youtube</b></th>
+        <th width="780px" align="center"><p>https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA</p></th>
     </tr>
 </table>
 </body>
