@@ -677,9 +677,7 @@ def checkVersion():
 		
     else :
     	print(Screen.Color[3],"[+] Aucun new version available .")
-		
-    
-
+	
 if __name__ == "__main__" :
 
     try :
@@ -779,9 +777,5 @@ if __name__ == "__main__" :
             if connect.saveResult :
                     connect.saveResults(Screen.scanTitle[1], connect.Url , 1)
                     print("\n",Screen.Color[4],"[::] Good Bye ! !--Hacker--! || your result is saved on save result.txt")
-    	
-    	
     except KeyboardInterrupt :
         print(Screen.Color[2],"\n\t[!] Good bye bro process stopped by user.")
-
-	print("\033[0;0m")
