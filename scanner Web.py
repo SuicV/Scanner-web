@@ -17,7 +17,7 @@ import hashlib
 ##
 ##                 Created by : Suicedal-Virus .
 ##                
-##                   ALL RIGHTS RESERVED 2016
+##             Gnu General Public License 
 ##                    
 ##           [::] Author   : Driss Oulhbib
 ##           [::] Facebook : https://www.facebook.com/BarmajiyatTreeZero
