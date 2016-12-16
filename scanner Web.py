@@ -14,12 +14,9 @@ import base64
 import hashlib
 
 ############################################################################################################################################################################################################################################################################################################
-##
-##                 Created by : Suicedal-Virus .
-##                
 ##             Gnu General Public License 
 ##                    
-##           [::] Author   : Driss Oulhbib
+##           [::] Author   : Suicedal-Virus
 ##           [::] Facebook : https://www.facebook.com/BarmajiyatTreeZero
 ##           [::} Github   : https://github.com/Suicedal-Virus
 ##           |::] Youtube  : https://www.youtube.com/channel/UCRR-0urV992N8hrBBaPmzVA
