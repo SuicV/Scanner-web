@@ -16,7 +16,7 @@ Search / Dork / Scan
 <table width="100%" border="0" cellpadding="0" cellspacing="2">
     <tr>
         <td width="100px"><b>Coder</b></td>
-        <td width="780px" align="center" >Driss Oulhbib</td>
+        <td width="780px" align="center" >Suicedal Virus</td>
     </tr>
     <tr>
         <th width="100px"><b>Version</b></th>
