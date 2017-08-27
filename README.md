@@ -1,6 +1,6 @@
 <!-- Version 1.3 -->
 # Scanner Web
-**Scanner Web** is a tool for searching dorks and scanning web site's , and it is compatible with all platforms Linux & Windows
+**Scanner Web** is a tool for searching dorks and scanning web site's , and it is compatible with all platforms `Linux` & `Windows` & `mac`
 
 > Requirements 
 * Python 3.x [Download it](https://www.python.org/downloads/release/python-352/)
