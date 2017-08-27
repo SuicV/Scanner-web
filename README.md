@@ -1,5 +1,3 @@
 <!-- Version 1.2 -->
-<div style="text-align: center">
-    #Scanner Web
-</div>
+#Scanner Web
 ###searching dorks and scannig web site's 
