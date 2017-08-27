@@ -1,3 +1,3 @@
-<!-- Version 1.2 -->
+<!-- Version 1.3 -->
 # Scanner Web
-#### searching dorks and scannig web site's 
+*Scanner Web* is a tool for searching dorks and scanning web site's
