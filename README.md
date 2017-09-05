@@ -11,3 +11,10 @@
     
     install git 
     git clone https://github.com/SuicV/Scanner-web
+
+**Windows**
+    
+    Install python 3.x
+    Add python 3.x compiler to command line 
+    Download Scanner Web
+    
