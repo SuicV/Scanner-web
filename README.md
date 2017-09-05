@@ -5,16 +5,3 @@
 > Requirements 
 * Python 3.x [Download it](https://www.python.org/downloads/release/python-352/)
 * You have the access to Python from command-line
-> installation :
-
-**Linux**
-    
-    install git 
-    git clone https://github.com/SuicV/Scanner-web
-
-**Windows**
-    
-    Install python 3.x
-    Add python 3.x compiler to command line 
-    Download Scanner Web
-    
