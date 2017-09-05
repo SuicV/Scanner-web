@@ -35,7 +35,7 @@ class Scanner_Web_Core (object):
                 "us", "com.uy", "co.uz", "co.ve", "vg", "co.vi", "vu", "co.za", "co.zm", "co.zw"]
 
 	Forbiden = ['facebook.com', 'twitter.', '.google.','github.', 'linkedin.', 'microsoft.', 'youtube.', 'bing.',"stackoverflow.","teamfortress",
-                'yahoo.', 'sogou.', 'ask.', 'yandex.', 'msn.', 'w3school.', 'windows.', 'adobe.com', 'outlook.',"laravel.","wordpress.","w3schools"
+                'yahoo.', 'sogou.', 'ask.', 'yandex.', 'msn.', 'w3school.','w3.', 'windows.', 'adobe.com', 'outlook.',"laravel.","wordpress.","w3schools"
                  'window.', 'JQuery.min', 'hotmail.', 'yandex.','sogou.', 'bing','php.net', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net',
                  "devdocs.","steampowered.","origin.","adsense.google.","linuxmint.","ubuntu.","debian.","arch-linux.","w3schools.com"]
 	pageAdmins = ["/admin/", "/admin/login.php", "/myadmin/", "/acceso/", "/administrator/", "/admin1/", "/admin2/", "/wp-admin/login.php",
