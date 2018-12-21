@@ -68,7 +68,7 @@ class Scanner_Web_Core (object):
     		"joomla" : ["<meta name=\"generator\" content=\"Joomla"]}
 
 	def __init__(self) :
-		self.version = 1.4
+		self.version = 1.5
 		self.scanTitles = {"u":"URL SCAN","d":"DORK SEARCH","md5":"MD5 ENCRYPTATION"}
 		self.sc = screen()
 		self.connector = connector()
@@ -119,7 +119,7 @@ class Scanner_Web_Core (object):
 		if engin == "bing":
 			result = self.regex.findRegex(r'<h2><a href="(.*?)" h="',html)
 		elif engin == "google":
-			result = self.regex.findRegex(r'<h3 class="r"><a href="(.*?)"', html)
+			result = self.regex.findRegex(r'<div class="r"><a href="(.*?)"', html)
 			
 		for url in result :
 			if self.isForbiden(url) is False and url not in self.urlFound :
