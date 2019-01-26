@@ -1,8 +1,5 @@
 from Connection import connector
 from screen import screen
-from optparse import OptionParser
-from optparse import OptionGroup
-from optparse import OptionValueError
 from random import choice
 from regex import regex
 

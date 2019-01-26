@@ -1,10 +1,10 @@
 from socket import gethostbyname
+from socket import getservbyport
 from Connection import connector
 from ScannerWebCore import Scanner_Web_Core
 from regex import regex
 from vulnerability import vuln
 from collections import Counter
-from socket import getservbyport
 from math import floor
 from os import system
 

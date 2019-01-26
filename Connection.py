@@ -2,7 +2,6 @@ import urllib.request as request
 from urllib.parse import urlparse , quote
 import urllib.error
 from random import choice
-import urllib.error
 import socket
 class connector (object):
 
@@ -106,7 +105,7 @@ class connector (object):
 	"""
 	Method tcpScan(self,sc,target)
 		method scan tcp ports
-		return list of opened ports  
+		return list of opened ports or false if no port opened
 	"""
 	def tcpScan (self, sc, target, serverScanned):
 
@@ -125,7 +124,7 @@ class connector (object):
 	"""
 	Method udpScan(self,sc,target)
 		method scan udp ports
-		return list of opened ports  
+		return list of opened ports return false if no port opened
 	"""
 	def udpScan (self, sc, target, serverScanned):
 		target = self.parser(target).netloc
