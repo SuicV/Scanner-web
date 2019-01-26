@@ -34,7 +34,8 @@ class screen () :
 	def getColor (self , Color):
 		return self.colors.get(Color)
 	"""
-	Method prLogo 
+	Method prLogo
+		method to print the logo 
 		print self.logo if is passed
 	"""
 	def prLogo(self):
@@ -43,7 +44,9 @@ class screen () :
 			print(logo,self.restarColor)
 		else :
 			print(self.logos,self.restarColor)
-
+	"""
+	@mehtod to print an information
+	"""
 	def prInfo(self, title,value,tab= 0, rtn = None):
 		if rtn is not None :
 			print(" "*self.termenalSize().columns,end="\r")
@@ -51,12 +54,20 @@ class screen () :
 		else : 
 			print(" "*tab,"[+]",title,":",value,self.restarColor)
 
-
+	"""
+	@method print a subinformation
+	"""
 	def prSubInfo(self, title, value,tab= 4):
 		print(" "*tab,"==>",title,":",value,self.restarColor)
 	
+	"""
+	@method print a danger
+	"""
 	def prDanger(self,title,value,tab= 0):
 		print(" "*tab,"[!]",title,":",value,self.restarColor)
-
+	
+	"""
+	@method return the number of colomns in terminal screen
+	"""
 	def termenalSize(self):
 		return get_terminal_size()

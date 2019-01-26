@@ -19,15 +19,22 @@ def getHttp(code):
 		return "HTTP/1.0"
 	return "HTTP/1.1"
 
+"""
+@func to form a string of opened ports to print on screen
+@return string
+"""
 def openedPortsString(opendports):
 	string =""
 	for port in opendports :
 		try :
 			string += str(port) + " [ "+getservbyport(port)+" ] "
 		except OSError :
-			pass
+			string += str(port) +" [ Service Not Found ] " 
 	return string
-
+"""
+@func to get dorks or urls from the passed file in arguments -u or -d 
+@return {List} of urls or dorks
+"""
 def getLists(file):
 	List = []
 	for line in open(file,"r").readlines():
@@ -157,7 +164,9 @@ def startScannig(sc,options,urls,proxy=None):
 				sc.prSubInfo("External-command",sc.getColor("green")+command)
 				system(command)
 
-
+"""
+@func to print results passed in scannResults parameter
+"""
 def printScaningResult(sc, scannResults):
 	# REMOVE LAST LINE FROM TERMENAL
 	print(" "*sc.termenalSize().columns,end="\r")
@@ -168,12 +177,18 @@ def printScaningResult(sc, scannResults):
 			if info in scannResults and scannResults[info] is not None :
 				sc.prSubInfo(info , scannResults[info])
 
+"""
+@func to check if a string start with a color and remove it 
+@return string without color
+"""
 def hasColor(value):
 
 	if Regex.findMatch(r'^\x1b[^m]*m',value):
 		return value[7:]
 	return value
-
+"""
+@func to save results 
+"""
 def saveResults(scannResults,file,url):
 	file = open(file,'a')
 	file.writelines("::[{}]::\n".format(url))
@@ -181,7 +196,10 @@ def saveResults(scannResults,file,url):
 		if value != "htmlResponse" and scannResults[value] is not None:
 			file.writelines("\t{} : {}\n".format(value,hasColor(scannResults[value])))
 	file.close()
-
+"""
+@func to prepare the externale command by replacing flags with there values
+@return command to run 
+"""
 def externalCommand(command,url,ip):
 	if "--HOST" in command:
 		command = command.replace("--HOST",connection.parser(url).netloc)

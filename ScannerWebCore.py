@@ -68,7 +68,7 @@ class Scanner_Web_Core (object):
 	
 	"""
 	Method searchDork (self, enginUrl)
-		return search dork result after passing self.connecto.connection(urlEngin) to getDorkResutls method 
+		return search dork result after passing self.connector.connection(urlEngin) to getDorkResutls method 
 	"""
 	def searchDork(self,enginUrl):
 		"""
