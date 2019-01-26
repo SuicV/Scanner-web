@@ -110,12 +110,6 @@ def buildArgvSys():
 					  help="Look for a regex in response",
 					  metavar="REGEX")
 
-	parser.add_option("--admin",
-					  dest="adminPage",
-					  help="Search the admin page",
-					  default=False,
-					  action="store_true")
-
 	parser.add_option("--sql-injection",
 					  dest="sql",
 					  help="scan for sql injection error",

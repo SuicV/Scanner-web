@@ -8,7 +8,7 @@ from collections import Counter
 from math import floor
 from os import system
 
-pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By","Regex","Tcp Ports","Udp Ports","Sql Injection","Page Admin","External Command"]
+pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By","Regex","Tcp Ports","Udp Ports","Sql Injection","External Command"]
 core = Scanner_Web_Core()
 Regex = regex()
 connection = connector()
@@ -143,14 +143,6 @@ def startScannig(sc,options,urls,proxy=None):
 					scannResults["Sql Injection"] = sc.getColor("green")+"Error Found"
 				else :
 					scannResults["Sql Injection"] = sc.getColor("red")+vulna.sqlInjection(url)
-			
-			# FIND PAGE ADMIN
-			if options.get("adminPage") :
-				adminpage = core.pageSearcher(url, core.pageAdmins)
-				if adminpage :
-					scannResults["Page Admin"] = sc.getColor("green")+adminpage
-				else : 
-					scannResults["Page Admin"] = sc.getColor("red")+"Not found"		
 			
 			# PRINT RESULTS
 			printScaningResult(sc , scannResults)
