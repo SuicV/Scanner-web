@@ -82,7 +82,7 @@ if __name__ == "__main__":
 				sc.prDanger("Error",sc.getColor("red")+"Urls not found or is forbiden")
 				exit()
 			startScannig(sc,options,urls,options.get("proxy"))
-			print("-"*75)
+			print("-"*sc.termenalSize().columns)
 
 		# SEARCH DORK AND SCANN RESULTS 
 		if options.get("dork"):
@@ -100,7 +100,8 @@ if __name__ == "__main__":
 					print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
 					urlsFound = dorkSearch(dork,core,sc,options.get("pages"))
 					print(" "*sc.termenalSize().columns,end="\r")
-					startScannig(sc, options,urlsFound,options.get("proxy"))	
+					startScannig(sc, options,urlsFound,options.get("proxy"))
+
 			else : 
 				print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
 				sc.prInfo("DORK",options.get("dork"))
@@ -110,10 +111,11 @@ if __name__ == "__main__":
 				print(" "*sc.termenalSize().columns,end="\r")
 
 				startScannig(sc, options,urlsFound,options.get("proxy"))			
+		
 		# END OF SCRIPT
 		print(" "*sc.termenalSize().columns,end="\r")
 		print(sc.getColor("red"),"-"*(sc.termenalSize().columns-1))
-		print(sc.getColor("bold_green")+"[ENJOY!]"+sc.restarColor)
 	except KeyboardInterrupt :
 		print(sc.getColor("red"),"-"*15," SCAN STOPED ","-"*15,sc.restarColor)
-		print(sc.getColor("bold_green")+"[ENJOY!]"+sc.restarColor)
+
+	print(sc.getColor("bold_green")+"[ENJOY!]"+sc.restarColor)

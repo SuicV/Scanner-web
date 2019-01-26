@@ -88,13 +88,14 @@ class Scanner_Web_Core (object):
 		param html string html code  
 		"""
 		engin = self.options.get("engin").lower()
+		self.urlFound = []
 		if engin == "bing":
 			result = self.regex.findRegex(r'<h2><a href="(.*?)" h="',html)
 		elif engin == "google":
 			result = self.regex.findRegex(r'<div class="r"><a href="(.*?)"', html)
 			
 		for url in result :
-			if self.isForbiden(url) is False and url not in self.urlFound :
+			if self.isForbiden(url) == False and url not in self.urlFound :
 				self.urlFound.append(url) 
 		return self.urlFound
 	
