@@ -71,3 +71,8 @@ class screen () :
 	"""
 	def termenalSize(self):
 		return get_terminal_size()
+	"""
+	@method to clear a line 
+	"""
+	def clearLine(self):
+		print(" "*self.termenalSize().columns,end="\r")

@@ -113,7 +113,7 @@ if __name__ == "__main__":
 				startScannig(sc, options,urlsFound,options.get("proxy"))			
 		
 		# END OF SCRIPT
-		print(" "*sc.termenalSize().columns,end="\r")
+		sc.clearLine()
 		print(sc.getColor("red"),"-"*(sc.termenalSize().columns-1))
 	except KeyboardInterrupt :
 		print(sc.getColor("red"),"-"*15," SCAN STOPED ","-"*15,sc.restarColor)

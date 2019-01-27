@@ -8,7 +8,8 @@ from collections import Counter
 from math import floor
 from os import system
 
-pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By","Regex","Tcp Ports","Udp Ports","Sql Injection","External Command"]
+pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By",
+		"Regex","Tcp Ports","Udp Ports","Sql Injection","External Command"]
 core = Scanner_Web_Core()
 Regex = regex()
 connection = connector()
@@ -44,7 +45,7 @@ def getLists(file):
 def dorkSearch(dork, core, sc, pages):
 
 	for page in range(10,pages*10+10,10):
-		print(" "*sc.termenalSize().columns,end="\r")
+		sc.clearLine()
 		sc.prInfo(sc.getColor("cyan")+"Scanning page :",
 				  sc.getColor("bold_yellow")+str(floor(page/10)),rtn=True)	
 		enginUrl = core.prepareEngin(dork,page)
@@ -78,6 +79,7 @@ def startScannig(sc,options,urls,proxy=None):
 		# IF AN ERROR 
 		if resp.response is  None: 
 			scannResults["Error"]              = str(resp.error)+str(resp.status)
+			sc.clearLine()
 			printScaningResult(sc,scannResults)
 		# IF NOT 
 		else :
@@ -115,6 +117,7 @@ def startScannig(sc,options,urls,proxy=None):
 				flilResults = ""
 				if results != [] :
 					counter = Counter(results)
+					# COMBINING RESULTS 
 					for key in counter.keys() :
 						flilResults += str(key) + " |["+str(counter.get(key))+"]| "
 					scannResults["Regex"]      = sc.getColor("green")+flilResults
@@ -169,10 +172,11 @@ def startScannig(sc,options,urls,proxy=None):
 """
 def printScaningResult(sc, scannResults):
 	# REMOVE LAST LINE FROM TERMENAL
-	print(" "*sc.termenalSize().columns,end="\r")
+	sc.clearLine()
 	if scannResults["Error"] is not None :
-		sc.prSubInfo("Error",scannResults["Error"])
-	else : 
+		sc.prSubInfo("Error",sc.getColor("red")+scannResults["Error"])
+	else :
+		# PRINTING INFORMATIONS
 		for info in pp :
 			if info in scannResults and scannResults[info] is not None :
 				sc.prSubInfo(info , scannResults[info])
@@ -202,7 +206,7 @@ def saveResults(scannResults,file,url):
 """
 def externalCommand(command,url,ip):
 	if "--HOST" in command:
-		command = command.replace("--HOST",connection.parser(url).netloc)
+		command = command.replace("--HOST",connector.parser(url).netloc)
 	if "--IP" in command : 
 		if  ip :
 			command = command.replace("--IP",ip)

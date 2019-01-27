@@ -60,7 +60,8 @@ class Scanner_Web_Core (object):
 		param dork string dork to add it to url engin 
 		"""
 		engin = self.options.get("engin").lower()
-		if engin in ["bing"] :
+
+		if engin == "bing":
 			return self.engins.get(engin).format(dork,page)
 		else :
 			domain = choice(self.googleDot)
