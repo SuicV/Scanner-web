@@ -39,18 +39,17 @@ class connector (object):
 			self.error = None
 			self.response = request.urlopen(Request,timeout=int(timeout))
 			self.status  = self.response.getcode()
-			return self
 		except urllib.error.HTTPError as error:
 			self.status = error.code
 			self.error = error.reason
-			return self
 		except urllib.error.URLError as error :
 			self.error = error.reason
 			self.status = ""
-			return self
 		except socket.timeout :
 			self.error = "Time out Error"
-			return self
+		except ValueError :
+			self.error = "Unkown url type "
+		return self
 	
 	"""
 	Method checkProxy(self,proxy)
