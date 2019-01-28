@@ -7,7 +7,7 @@ from os.path import exists
 def buildArgvSys():
 	Regex = regex()
 	parser = OptionParser()
-	#GROPS
+	# GROUPS
 	Proxy = OptionGroup(parser,
 						"Proxy Options")
 	Encryptation = OptionGroup(parser,
@@ -15,6 +15,7 @@ def buildArgvSys():
 	External_command = OptionGroup(parser,
 									"External Command",
 									"Use an external tool with the scan")
+	# SET OPTIONS TO GROUPS 
 	Proxy.add_option("-p","--proxy",
 					 dest="proxy",
 					 help="Use proxy with scan",
@@ -42,7 +43,7 @@ def buildArgvSys():
 							dest="base64Decr",
 							help="Decrypte a base64 to string",
 							metavar="STRING")
-	# ADD GROPS
+	# ADD GROUPS
 	parser.add_option_group(Proxy)
 	parser.add_option_group(Encryptation)
 	parser.add_option_group(External_command)
@@ -81,7 +82,7 @@ def buildArgvSys():
 	parser.add_option("--time-out",
 					  dest="timeout",
 					  help="Set time out of the connecton default time out = 30s",
-					  metavar="SECENDS",
+					  metavar="SECONDS",
 					  default=30,
 					  type="int",
 					  callback=timeout,
@@ -98,6 +99,16 @@ def buildArgvSys():
 					  help="Scan udp ports in the server",
 					  default=False,
 					  action="store_true")
+
+	parser.add_option("--ports",
+					  dest="ports",
+					  help="set your ports to scan you can set set a single port or multiple ports separated by ','\
+					        or an intervale of ports with using range(min,max) function ",
+					  callback=portsChecker,
+					  action="callback",
+					  type="string",
+					  callback_args=tuple([Regex])
+					)
 
 	parser.add_option("--validation",
 					  dest="validation",
@@ -134,6 +145,7 @@ def buildArgvSys():
 
 	(options, args) = parser.parse_args()
 	return vars(options)
+
 # CALLBACKS FOR HANDLING OPTIONS 
 def timeout(option,opt_str,value,parser):
 	"""
@@ -145,19 +157,19 @@ def timeout(option,opt_str,value,parser):
 	if value >= 5 :
 		parser.values.timeout = value
 	else :
-		raise OptionValueError("{} value must be more than 10 seconds".format(opt_str))
-
+		raise OptionValueError("{} value must be more than 10 seconds".format(opt_str))	
+	pass
+"""
+@func to check if a passed file exist or not and raise an error if doesn't exist
+"""
 def listExist(option,opt_str,value,parser,Regex):
 
 	if Regex.isPath(value):
-
 		if exists(value):
-
 			if option.dest == "dork" :
 				parser.values.dork = {"List":value}
 			elif option.dest == "url" :
 				parser.values.url = {"List":value}
-
 		else :
 			raise OptionValueError("file passed in {} doesn't exist".format(opt_str))
 	else :
@@ -165,3 +177,20 @@ def listExist(option,opt_str,value,parser,Regex):
 			parser.values.dork = value
 		if option.dest == "url":
 			parser.values.url = value
+	pass
+
+def portsChecker(option,opt_str,value,parser,Regex):
+	result = Regex.getfullMatch(Regex.PortsChecker,value)
+	if result.match() != None:
+		if "range" not in result.match() :
+			result = result.match().split(",")
+		else :
+			fromPort = result.groups[0][1]
+			toPort = result.groups[0][2]
+			if fromPort < toPort :
+				result = range(fromPort,toPort)
+			else :
+				result = range(toPort,fromPort)
+	else :
+		raise OptionValueError("no ports match set a single port or port1,port2,... or range(fromPort,toPort)")
+	pass
