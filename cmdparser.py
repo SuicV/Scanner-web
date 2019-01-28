@@ -109,7 +109,17 @@ def buildArgvSys():
 					  type="string",
 					  callback_args=tuple([Regex])
 					)
+	parser.add_option("--portsTCP",
+					  dest="portsTCP",
+					  help="Scan tcp ports in the server",
+					  default=False,
+					  action="store_true")
 
+	parser.add_option("--portsUDP",
+					dest="portsUDP",
+					help="Scan udp ports in the server",
+					default=False,
+					action="store_true")				  
 	parser.add_option("--validation",
 					  dest="validation",
 					  help="Look for a string in response of site's",
