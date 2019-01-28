@@ -4,7 +4,7 @@ class regex(object):
 	Url = r"^http[s]?://[A-z0-9.]+.[A-z]{1,4}"
 	File = r"([A-z0-9]+\.[A-z]+)"
 	List = r'^([A-z]://)+?([A-z0-9\-_/\s]+)([A-z0-9\s\-_]+\.txt)$|/?([A-z0-9\-_/\s]+)([A-z0-9\s\-_]+\.txt)$'
-	
+	PortsChecker = r'^(\d+,?)+$|^range\((\d+),(\d+)\)$'
 	"""
 	Method isIpV4(String)
 		check if there an ipV4 in String
@@ -45,8 +45,16 @@ class regex(object):
 	"""
 	def findRegex(self,pattern,string):
 		return re.findall(pattern,string)
-
+	"""
+	Method findMatch(self,pattern,string)
+	"""
 	def findMatch(self,pattern,string):
-		if re.match(pattern,string) is None :
+		if re.fullmatch(pattern,string) is None :
 			return False
 		return True
+	
+	def getfullMatch(self,pattern,string):
+		result = re.fullmatch(pattern,string)
+		if result != None :
+			return result
+		return None
