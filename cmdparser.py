@@ -191,16 +191,20 @@ def listExist(option,opt_str,value,parser,Regex):
 
 def portsChecker(option,opt_str,value,parser,Regex):
 	result = Regex.getfullMatch(Regex.PortsChecker,value)
-	if result.match() != None:
-		if "range" not in result.match() :
-			result = result.match().split(",")
+	if result.string != None:
+		if "range" not in result.string :
+			result = result.string.split(",")
 		else :
-			fromPort = result.groups[0][1]
-			toPort = result.groups[0][2]
+			result = Regex.findRegex(r'range\((\d+),(\d+)\)',result.string)
+
+			fromPort = int( result[0][0] )
+			toPort = int( result[0][1] )
+
 			if fromPort < toPort :
 				result = range(fromPort,toPort)
 			else :
 				result = range(toPort,fromPort)
+		parser.values.ports = result
 	else :
 		raise OptionValueError("no ports match set a single port or port1,port2,... or range(fromPort,toPort)")
 	pass
