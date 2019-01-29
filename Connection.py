@@ -100,40 +100,50 @@ class connector (object):
 	"""
 	def getIp(self,url):
 		return socket.gethostbyname(  self.parser(url).netloc  )
+	"""
+	Method portScan
+		method to scan specefic port
+		retrun boolien
+	"""
+	def portScan(self, target ,_type, port):
+		# CREATING SOCKET
+		if _type == "TCP":
+			_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		else :
+			_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		_socket.settimeout(10)
+		# CONNECT TO SERVER FROM PASSED PORT 
+		return _socket.connect_ex((target,port))
 
 	"""
 	Method tcpScan(self,sc,target)
 		method scan tcp ports
 		return list of opened ports or false if no port opened
 	"""
-	def tcpScan (self, sc, target, serverScanned):
+	def tcpScan (self, sc, target, serverScanned,_ports):
 
 		target = self.parser(target).netloc
 		if target not in serverScanned : 
 			openedTcp = []
-			for port in self.ports :
-				socketTcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				socketTcp.settimeout(10)
+			for port in _ports :
 				sc.prInfo("Scann TCP port ",str(port),rtn=True)
-				if socketTcp.connect_ex((target, port)) == 0 :
+				if self.portScan(target ,"TCP",port) == 0 :
 					openedTcp.append(port)
 			return openedTcp
-
 		return False
+	
 	"""
 	Method udpScan(self,sc,target)
 		method scan udp ports
 		return list of opened ports return false if no port opened
 	"""
-	def udpScan (self, sc, target, serverScanned):
+	def udpScan (self, sc, target, serverScanned, _ports):
 		target = self.parser(target).netloc
 		if target not in serverScanned :
 			openedTcp = []
-			for port in self.ports :
-				socketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-				socketUdp.settimeout(10)
+			for port in _ports :
 				sc.prInfo("Scann UDP port ",str(port),rtn=True)
-				if socketUdp.connect_ex((target, port)) == 0 :
+				if self.portScan == 0 :
 					openedTcp.append(port)
 
 			return openedTcp
