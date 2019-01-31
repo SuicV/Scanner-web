@@ -28,7 +28,7 @@ def openedPortsString(opendports):
 	string =""
 	for port in opendports :
 		try :
-			string += str(port) + " [ "+getservbyport(port)+" ] "
+			string += str(port) + " [ "+getservbyport(int(port))+" ] "
 		except OSError :
 			string += str(port) +" [ Service Not Found ] " 
 	return string
@@ -123,28 +123,52 @@ def startScannig(sc,options,urls,proxy=None):
 					scannResults["Regex"]      = sc.getColor("green")+flilResults
 				else :
 					scannResults["Regex"]      = sc.getColor("red")+"Matched Regex Not Found"
+			# SCANNING PORTS SETTED BY USER 
+			if options.get("ports") :
+
+				if options.get("portsTCP") :
+					openedports = connection.tcpScan(sc,url,serverScannedTcp, options.get("ports"))
+					if openedports != False :
+						result = openedPortsString(openedports)
+						scannResults["Tcp Ports"]      = sc.getColor("green")+result
+						serverScannedTcp.append(connector.parser(url).netloc)
+
+					else : 
+						scannResults["Tcp Ports"]      = sc.getColor("red")+"this server already scanned"
+					
+				if options.get("portsUDP") :
+					openedports = connection.udpScan(sc,url,serverScannedUdp, options.get("ports"))
+					if openedports != False :
+						result = openedPortsString(openedports)
+						scannResults["Udp Ports"]      = sc.getColor("green")+result
+						serverScannedUdp.append(connector.parser(url).netloc)
+
+					else :
+						scannResults["Udp Ports"]      = sc.getColor("red")+"this server already scanned"
+				pass
 			# SCANNING TCP PORTS 
-			if options.get("tcp-ports") :
-				openedports = connection.tcpScan(sc,url,serverScannedTcp)
-				if openedports != False :
-					result = openedPortsString(openedports)
-					scannResults["Tcp Ports"]      = sc.getColor("green")+result
-					serverScannedTcp.append(connector.parser(url).netloc)
+			else : 
+				if options.get("tcp-ports") :
+					openedports = connection.tcpScan(sc,url,serverScannedTcp, connection.ports)
+					if openedports != False :
+						result = openedPortsString(openedports)
+						scannResults["Tcp Ports"]      = sc.getColor("green")+result
+						serverScannedTcp.append(connector.parser(url).netloc)
 
-				else : 
-					scannResults["Tcp Ports"]      = sc.getColor("red")+"this server already scanned"
-				
-			# SCANNIG UDP PORTS
-			if options.get("udp-ports") :
-				openedports = connection.udpScan(sc,url,serverScannedUdp)
-				if openedports != False :
-					result = openedPortsString(openedports)
-					scannResults["Udp Ports"]      = sc.getColor("green")+result
-					serverScannedUdp.append(connector.parser(url).netloc)
+					else : 
+						scannResults["Tcp Ports"]      = sc.getColor("red")+"this server already scanned"
+					
+				# SCANNIG UDP PORTS
+				if options.get("udp-ports") :
+					openedports = connection.udpScan(sc,url,serverScannedUdp, connection.ports)
+					if openedports != False :
+						result = openedPortsString(openedports)
+						scannResults["Udp Ports"]      = sc.getColor("green")+result
+						serverScannedUdp.append(connector.parser(url).netloc)
 
-				else :
-					scannResults["Udp Ports"]      = sc.getColor("red")+"this server already scanned"
-			
+					else :
+						scannResults["Udp Ports"]      = sc.getColor("red")+"this server already scanned"
+
 			# LOOK FOR SQL INJECTION ERROR
 			if options.get("sql"):
 				sc.prInfo("Scanning","Sql-Injection",rtn=True)

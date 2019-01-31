@@ -127,7 +127,7 @@ class connector (object):
 			openedTcp = []
 			for port in _ports :
 				sc.prInfo("Scann TCP port ",str(port),rtn=True)
-				if self.portScan(target ,"TCP",port) == 0 :
+				if self.portScan(target ,"TCP",int(port)) == 0 :
 					openedTcp.append(port)
 			return openedTcp
 		return False
@@ -143,7 +143,7 @@ class connector (object):
 			openedTcp = []
 			for port in _ports :
 				sc.prInfo("Scann UDP port ",str(port),rtn=True)
-				if self.portScan == 0 :
+				if self.portScan(target,"UDP",int(port)) == 0 :
 					openedTcp.append(port)
 
 			return openedTcp
