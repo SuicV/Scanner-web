@@ -7,13 +7,13 @@ from vulnerability import vuln
 from collections import Counter
 from math import floor
 from os import system
-
+from screen import screen
 pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By",
 		"Regex","Tcp Ports","Udp Ports","Sql Injection","External Command"]
-core = Scanner_Web_Core()
 Regex = regex()
 connection = connector()
 vulna = vuln(connection)
+sc = screen()
 
 def getHttp(code):
 	if code == 10 :
@@ -41,9 +41,11 @@ def getLists(file):
 	for line in open(file,"r").readlines():
 		List.append(line[:-1])
 	return List 
-
-def dorkSearch(dork, core, sc, pages):
-
+"""
+def dorkSearch (dork, core, pages)
+	function return a list of urls found in search dork
+"""
+def dorkSearch(dork, core, pages):
 	for page in range(10,pages*10+10,10):
 		sc.clearLine()
 		sc.prInfo(sc.getColor("cyan")+"Scanning page :",
@@ -52,11 +54,15 @@ def dorkSearch(dork, core, sc, pages):
 		results = core.searchDork(enginUrl)
 	return results
 	
-def startScannig(sc,options,urls,proxy=None):
+def startScannig(core, options,urls,proxy=None):
 
 	scannResults = {}
 	serverScannedTcp = []
 	serverScannedUdp = []
+	
+	# FILTRING URLS 
+	if urls == None : 
+		return 
 
 	for urlNu , url in enumerate(urls) :
 		

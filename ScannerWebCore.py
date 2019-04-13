@@ -39,15 +39,14 @@ class Scanner_Web_Core (object):
 	cmsTags = {"wordpress":["<a href=\"https:\/\/wordpress.org\/\">Proudly powered by WordPress", "<meta name=\"generator\" content=\"WordPress", "\/wp-content\/(.*).js","wordpress/plugins"],
     		"joomla" : ["<meta name=\"generator\" content=\"Joomla"]}
 
-	def __init__(self) :
-		self.version = 1.5
+	def __init__(self, connector) :
+		self.version = 1.6
 		self.scanTitles = {"u":"URL SCAN","d":"DORK SEARCH","md5":"MD5 ENCRYPTATION"}
 		self.sc = screen()
-		self.connector = connector()
+		self.connector = connector
 		self.engins = {"google":"http://www.google.{}/search?q={}&start={}",
 					   "bing":"http://www.bing.com/search?q={}&first={}",
 					   }
-		self.url =""
 		self.urlFound = []
 		self.regex = regex()
 
@@ -89,7 +88,6 @@ class Scanner_Web_Core (object):
 		param html string html code  
 		"""
 		engin = self.options.get("engin").lower()
-		self.urlFound = []
 		if engin == "bing":
 			result = self.regex.findRegex(r'<h2><a href="(.*?)" h="',html)
 		elif engin == "google":
@@ -132,14 +130,14 @@ class Scanner_Web_Core (object):
 	"""
 	Method pageSearcher(self, url)
 		check if url is exist using method connetion.isExist in class connector after parse it 
-		retur url if is found and False if is not found 
+		return url if is found and False if is not found 
 	"""
-	def pageSearcher(self,url, urls):
+	def pageSearcher(self,url, uris):
 		"""
 		param urls string
 		"""
 		parsedUrl = self.connector.parser(url)
-		for path in urls:
+		for path in uris:
 			fullUrl = parsedUrl.scheme +"://"+ parsedUrl.netloc + path
 			self.sc.prInfo("Looking for",fullUrl,rtn=True)
 

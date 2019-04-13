@@ -1,4 +1,4 @@
-<!-- Version 1.5 -->
+<!-- Version 1.6 -->
 # Scanner Web
 **Scanner Web** is a hacking tool for getting informations and searching dorks and scanning web sites , and it is compatible with`Linux` & `Windows`
 

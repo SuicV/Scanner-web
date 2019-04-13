@@ -8,16 +8,16 @@ from Connection import connector
 from cmdparser import buildArgvSys
 
 if __name__ == "__main__":
-	
+
 	# SETUP
 	try :
 		options = buildArgvSys()
-		core = Scanner_Web_Core()
-		core.options = options
 		con = connector()
+		core = Scanner_Web_Core(con)
+		core.options = options
 		sc = screen(logos = Scanner_Web_Core.logos)
 		print(sc.getColor("bold_green"))
-
+		# BANNER
 		sc.prLogo()
 
 		print(":"*sc.termenalSize().columns)
@@ -31,13 +31,13 @@ if __name__ == "__main__":
 		# CHECK CONNECTION TO THE PROXY
 		if options.get("proxy") :
 			sc.prInfo("Checking Porxy",options.get("proxy"))
-			
+
 			if con.checkProxy(options.get("proxy")) == False :
 				sc.prDanger("Error",sc.getColor("red")+"Connection To Proxy Is Faild")
 				exit()
 			else : 
 				sc.prInfo("Success",sc.getColor("green")+"Connection To Proxy Is Succeed")
-		
+
 		#  CHECK FOR UPDATES
 		if options.get("update"):
 			
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
 		# BASE 64 ENCRYPTATION
 		if options.get("base64Encr"):
-			
+
 			sc.prInfo("PROCESS","Encrypt base64")
-			sc.prSubInfo("BASE64",options.get("base64Encr"))
+			sc.prSubInfo("STRING",options.get("base64Encr"))
 			sc.prSubInfo("Base64 encypted",hasher.base64Encr(options.get("base64Encr")))
-		
+
 		# BASE 64 DECRYPTATION
 		if options.get("base64Decr"):
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 		# MD5 ENCRYPTATION
 		if options.get("md5Enc"):
 			sc.prInfo("PROCESS","Decrypt md5")
-			sc.prSubInfo("STRIGN",options.get("md5Enc"))
+			sc.prSubInfo("STRING",options.get("md5Enc"))
 			sc.prSubInfo("Hash encypted",hasher.md5Encr(options.get("md5Enc")))
 
 		# SCAN URL
@@ -81,37 +81,42 @@ if __name__ == "__main__":
 			if len(urls) == 0 :
 				sc.prDanger("Error",sc.getColor("red")+"Urls not found or is forbiden")
 				exit()
-			startScannig(sc,options,urls,options.get("proxy"))
+			startScannig(core,options,urls,options.get("proxy"))
 			print("-"*sc.termenalSize().columns)
 
 		# SEARCH DORK AND SCANN RESULTS 
 		if options.get("dork"):
 			
-			sc.prInfo("SCAN TYPE",core.scanTitles.get("d"))
-			sc.prDanger("Engin",options.get("engin").title())
-			
+			sc.prInfo("SCAN TYPE", core.scanTitles.get("d"))
+			sc.prDanger("Engin", options.get("engin").title())
+
 			# WHEN USER SET A FILE
 			if type(options.get("dork")) is dict :
 				dorks = getLists(options.get("dork").get("List"))
 				sc.prInfo("Number of Dork found",len(dorks))
 				for dork in dorks :
+					core.urlFound = []
+					# PRINTING CURRENT DORK SCANING 
 					print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
 					sc.prInfo("DORK",dork)
 					print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
-					urlsFound = dorkSearch(dork,core,sc,options.get("pages"))
+					
+					# GETTING URLS TO SCAN
+					urlsFound = dorkSearch(dork,core,options.get("pages"))
 					print(" "*sc.termenalSize().columns,end="\r")
-					startScannig(sc, options,urlsFound,options.get("proxy"))
+					
+					startScannig(core, options, urlsFound, options.get("proxy"))
 
 			else : 
 				print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
 				sc.prInfo("DORK",options.get("dork"))
 				print(sc.getColor("bold_yellow"),"-"*(sc.termenalSize().columns-2),sc.restarColor)
-				
-				urlsFound = dorkSearch(options.get("dork"),core,sc,options.get("pages"))
+
+				urlsFound = dorkSearch(options.get("dork"),core,options.get("pages"))
 				print(" "*sc.termenalSize().columns,end="\r")
 
-				startScannig(sc, options,urlsFound,options.get("proxy"))			
-		
+				startScannig(core, options, urlsFound, options.get("proxy"))			
+
 		# END OF SCRIPT
 		sc.clearLine()
 		print(sc.getColor("red"),"-"*(sc.termenalSize().columns-1))
