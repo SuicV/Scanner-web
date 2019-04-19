@@ -1,4 +1,4 @@
-<!-- Version 1.6 -->
+<!-- Version 1.7 -->
 # Scanner Web
 **Scanner Web** is a hacking tool for getting informations and searching dorks and scanning web sites , and it is compatible with`Linux` & `Windows`
 
@@ -29,4 +29,4 @@
 ```console
 [YOUR-COMMAND-LINE] ~/scanner-web $ python3 scannerweb.py --dork /home/mylist.txt -e BING | GOOGLE
 ```
-for engines you can use only google or bing
+for engines you can use multiple engins by separate them with `|`
