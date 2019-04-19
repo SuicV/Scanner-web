@@ -36,11 +36,13 @@ class Scanner_Web_Core (object):
                  'window.', 'JQuery.min', 'hotmail.', 'yandex.','sogou.', 'bing.','php.', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net',
                  "devdocs.","steampowered.","origin.","adsense.google.","linuxmint.","ubuntu.","debian.","arch-linux.","w3schools.com"]
 	
-	cmsTags = {"wordpress":["<a href=\"https:\/\/wordpress.org\/\">Proudly powered by WordPress", "<meta name=\"generator\" content=\"WordPress", "\/wp-content\/(.*).js","wordpress/plugins"],
-    		"joomla" : ["<meta name=\"generator\" content=\"Joomla"]}
+	cmsTags = {
+							"wordpress":["<a href=\"https:\/\/wordpress.org\/\">Proudly powered by WordPress", "<meta name=\"|'generator\"|' content=\"|'WordPress\"|'", "\/wp-content\/(.*).js","wordpress/plugins"],
+    					"joomla" : ["<meta name=\"generator\" content=\"Joomla"]
+						}
 
 	def __init__(self, connector) :
-		self.version = 1.6
+		self.version = 1.7
 		self.scanTitles = {"u":"URL SCAN","d":"DORK SEARCH","md5":"MD5 ENCRYPTATION"}
 		self.sc = screen()
 		self.connector = connector
@@ -54,11 +56,10 @@ class Scanner_Web_Core (object):
 	Method prepareEngin (self, dork)
 		return  String ==> url of engin for Dork search
 	"""
-	def prepareEngin(self, dork,page):
+	def prepareEngin(self, dork, page, engin):
 		"""
 		param dork string dork to add it to url engin 
 		"""
-		engin = self.options.get("engin").lower()
 
 		if engin == "bing":
 			return self.engins.get(engin).format(dork,page)
@@ -70,24 +71,23 @@ class Scanner_Web_Core (object):
 	Method searchDork (self, enginUrl)
 		return search dork result after passing self.connector.connection(urlEngin) to getDorkResutls method 
 	"""
-	def searchDork(self,enginUrl):
+	def searchDork(self,enginUrl, engin):
 		"""
 		param enginUrl string 
 		"""
 		enginResponse = self.connector.connection(enginUrl)
 		try :
-			return self.getDorkResults(   enginResponse.response.read().decode("utf-8","ignore")   )
+			return self.getDorkResults(   enginResponse.response.read().decode("utf-8","ignore"), engin  )
 		except Exception :
 			pass
 	"""
 	Method getDorkResults(self, html)
 		return self.urlFound after filtring html code passed by searchDork and engin used
 	"""
-	def getDorkResults (self,html):
+	def getDorkResults (self, html, engin):
 		"""
 		param html string html code  
 		"""
-		engin = self.options.get("engin").lower()
 		if engin == "bing":
 			result = self.regex.findRegex(r'<h2><a href="(.*?)" h="',html)
 		elif engin == "google":

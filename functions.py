@@ -45,13 +45,13 @@ def getLists(file):
 def dorkSearch (dork, core, pages)
 	function return a list of urls found in search dork
 """
-def dorkSearch(dork, core, pages):
+def dorkSearch(dork, core, pages, engin):
 	for page in range(10,pages*10+10,10):
 		sc.clearLine()
 		sc.prInfo(sc.getColor("cyan")+"Scanning page :",
 				  sc.getColor("bold_yellow")+str(floor(page/10)),rtn=True)	
-		enginUrl = core.prepareEngin(dork,page)
-		results = core.searchDork(enginUrl)
+		enginUrl = core.prepareEngin(dork,page, engin)
+		results = core.searchDork(enginUrl, engin)
 	return results
 	
 def startScannig(core, options,urls,proxy=None):
