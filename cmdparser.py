@@ -94,12 +94,6 @@ def buildArgvSys():
 					  default=False,
 					  action="store_true")
 
-	parser.add_option("--udp-ports",
-					  dest="udp-ports",
-					  help="Scan udp ports in the server",
-					  default=False,
-					  action="store_true")
-
 	parser.add_option("--ports",
 					  dest="ports",
 					  help="set your ports to scan you can set set a single port or multiple ports separated by ','\
@@ -114,12 +108,7 @@ def buildArgvSys():
 					  help="Scan tcp ports in the server",
 					  default=False,
 					  action="store_true")
-
-	parser.add_option("--portsUDP",
-					dest="portsUDP",
-					help="Scan udp ports in the server",
-					default=False,
-					action="store_true")				  
+					  				  
 	parser.add_option("--validation",
 					  dest="validation",
 					  help="Look for a string in response of site's",

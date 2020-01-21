@@ -131,21 +131,3 @@ class connector (object):
 					openedTcp.append(port)
 			return openedTcp
 		return False
-	
-	"""
-	Method udpScan(self,sc,target)
-		method scan udp ports
-		return list of opened ports return false if no port opened
-	"""
-	def udpScan (self, sc, target, serverScanned, _ports):
-		target = self.parser(target).netloc
-		if target not in serverScanned :
-			openedTcp = []
-			for port in _ports :
-				sc.prInfo("Scann UDP port ",str(port),rtn=True)
-				if self.portScan(target,"UDP",int(port)) == 0 :
-					openedTcp.append(port)
-
-			return openedTcp
-
-		return False

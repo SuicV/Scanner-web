@@ -9,7 +9,7 @@ from math import floor
 from os import system
 from screen import screen
 pp = ["Status","Server","HTTP Version","Ip","Cms","Time Out","Validation","X-Powered-By",
-		"Regex","Tcp Ports","Udp Ports","Sql Injection","External Command"]
+		"Regex","Tcp Ports","Sql Injection","External Command"]
 Regex = regex()
 connection = connector()
 vulna = vuln(connection)
@@ -58,19 +58,18 @@ def startScannig(core, options,urls,proxy=None):
 
 	scannResults = {}
 	serverScannedTcp = []
-	serverScannedUdp = []
-	
+
 	# FILTRING URLS 
 	if urls == None : 
 		return 
 
 	for urlNu , url in enumerate(urls) :
-		
+
 		print("-"*20)
 		sc.prDanger("Url Num",str(urlNu+1)+"/"+str(len(urls)))
 		print("-"*20)
 		sc.prInfo("Url",sc.getColor("blue")+url)
-		
+
 		timeout=options.get("timeout")
 
 		print(sc.getColor("bold_green")+" Connecting ..."+sc.restarColor, end="\r")
@@ -95,7 +94,7 @@ def startScannig(core, options,urls,proxy=None):
 			scannResults["HTTP Version"]       = getHttp(resp.response.version)
 			scannResults["Status"]             = str(resp.response.status) + " " +resp.response.reason 
 			scannResults["X-Powered-By"]	   = resp.response.getheader("X-Powered-By")
-			
+
 			# GET INFO ABOUT SERVER IF --noInfo not used
 			if options.get("info") is False :
 				print(sc.getColor("bold_green")+" Geting information ..."+sc.restarColor, end="\r")
@@ -141,17 +140,7 @@ def startScannig(core, options,urls,proxy=None):
 
 					else : 
 						scannResults["Tcp Ports"]      = sc.getColor("red")+"this server already scanned"
-					
-				if options.get("portsUDP") :
-					openedports = connection.udpScan(sc,url,serverScannedUdp, options.get("ports"))
-					if openedports != False :
-						result = openedPortsString(openedports)
-						scannResults["Udp Ports"]      = sc.getColor("green")+result
-						serverScannedUdp.append(connector.parser(url).netloc)
 
-					else :
-						scannResults["Udp Ports"]      = sc.getColor("red")+"this server already scanned"
-				pass
 			# SCANNING TCP PORTS 
 			else : 
 				if options.get("tcp-ports") :
@@ -163,17 +152,6 @@ def startScannig(core, options,urls,proxy=None):
 
 					else : 
 						scannResults["Tcp Ports"]      = sc.getColor("red")+"this server already scanned"
-					
-				# SCANNIG UDP PORTS
-				if options.get("udp-ports") :
-					openedports = connection.udpScan(sc,url,serverScannedUdp, connection.ports)
-					if openedports != False :
-						result = openedPortsString(openedports)
-						scannResults["Udp Ports"]      = sc.getColor("green")+result
-						serverScannedUdp.append(connector.parser(url).netloc)
-
-					else :
-						scannResults["Udp Ports"]      = sc.getColor("red")+"this server already scanned"
 
 			# LOOK FOR SQL INJECTION ERROR
 			if options.get("sql"):
