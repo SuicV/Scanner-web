@@ -91,7 +91,7 @@ if __name__ == "__main__":
 			engins = options.get("engin").split("|")
 			for engin in engins :
 				core.urlFound = []
-
+				engin = engin.lower().strip()
 				sc.prDanger("Engin", engin.title())
 
 				# WHEN USER SET A FILE

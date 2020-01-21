@@ -32,17 +32,17 @@ class Scanner_Web_Core (object):
                 "us", "com.uy", "co.uz", "co.ve", "vg", "co.vi", "vu", "co.za", "co.zm", "co.zw"]
 
 	Forbiden = ['facebook.com', 'twitter.', '.google.','github.', 'linkedin.', 'microsoft.', 'youtube.', 'bing.',"stackoverflow.","teamfortress",
-                'yahoo.', 'sogou.', 'ask.', 'yandex.', 'msn.', 'w3school.','w3.', 'windows.', 'adobe.com', 'outlook.',"laravel.","wordpress.","w3schools"
-                 'window.', 'JQuery.min', 'hotmail.', 'yandex.','sogou.', 'bing.','php.', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net',
-                 "devdocs.","steampowered.","origin.","adsense.google.","linuxmint.","ubuntu.","debian.","arch-linux.","w3schools.com"]
+		'yahoo.', 'sogou.', 'ask.', 'yandex.', 'msn.', 'w3school.','w3.', 'windows.', 'adobe.com', 'outlook.',"laravel.","wordpress.","w3schools"
+		'window.', 'JQuery.min', 'hotmail.', 'yandex.','sogou.', 'bing.','php.', 'mysql.', 'microsofttranslator.','amazon.', 'www.asp.net',
+		"devdocs.","steampowered.","origin.","adsense.google.","linuxmint.","ubuntu.","debian.","arch-linux.","w3schools.com"]
 	
 	cmsTags = {
-							"wordpress":["<a href=\"https:\/\/wordpress.org\/\">Proudly powered by WordPress", "<meta name=\"|'generator\"|' content=\"|'WordPress\"|'", "\/wp-content\/(.*).js","wordpress/plugins"],
-    					"joomla" : ["<meta name=\"generator\" content=\"Joomla"]
-						}
+			"wordpress":["<a href=\"https:\/\/wordpress.org\/\">Proudly powered by WordPress", "<meta name=\"|'generator\"|' content=\"|'WordPress\"|'", "\/wp-content\/(.*).js","wordpress/plugins"],
+			"joomla" : ["<meta name=\"generator\" content=\"Joomla"]
+		}
 
 	def __init__(self, connector) :
-		self.version = 1.7
+		self.version = 1.8
 		self.scanTitles = {"u":"URL SCAN","d":"DORK SEARCH","md5":"MD5 ENCRYPTATION"}
 		self.sc = screen()
 		self.connector = connector
@@ -53,17 +53,17 @@ class Scanner_Web_Core (object):
 		self.regex = regex()
 
 	"""
-	Method prepareEngin (self, dork)
+	Method prepareEngin (self, dork, engin)
 		return  String ==> url of engin for Dork search
 	"""
 	def prepareEngin(self, dork, page, engin):
 		"""
 		param dork string dork to add it to url engin 
 		"""
-
+		engin = engin.lower()
 		if engin == "bing":
 			return self.engins.get(engin).format(dork,page)
-		else :
+		elif engin == "google" :
 			domain = choice(self.googleDot)
 			return self.engins.get(engin).format(domain,self.connector.queryEncode(dork),page)
 	
@@ -77,7 +77,7 @@ class Scanner_Web_Core (object):
 		"""
 		enginResponse = self.connector.connection(enginUrl)
 		try :
-			return self.getDorkResults(   enginResponse.response.read().decode("utf-8","ignore"), engin  )
+			return self.getDorkResults( enginResponse.response.read().decode("utf-8","ignore"), engin  )
 		except Exception :
 			pass
 	"""
@@ -121,6 +121,7 @@ class Scanner_Web_Core (object):
 		"""
 		param html string html code after connecting to target
 		"""
+		# TODO : think to use regex
 		for cms in self.cmsTags.keys():
 			for cmsTag in self.cmsTags.get(cms):
 				if cmsTag in html:
